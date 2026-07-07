@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schema.aismiths.cloud/job/v1.json",
+  "version": "1",
+  "platform": "bolt",
+  "problem_type": "deploy-fix",
+  "symptoms": ["deploy-fails", "port-mismatch", "env-vars-missing-in-prod"],
+  "stack": {
+    "framework": "next.js",
+    "database": "supabase-postgres",
+    "hosting": "fly.io",
+    "language": "typescript"
+  },
+  "codebase": {
+    "url": "https://github.com/client/my-app",
+    "access": "private-invite"
+  },
+  "urgency": "days",
+  "budget_range": {
+    "min": 100,
+    "max": 250,
+    "currency": "USD"
+  },
+  "description": "fly deploy keeps failing with 'port binding error'. App works fine locally with npm run dev. Think it might be a port mismatch but can't figure it out."
+}

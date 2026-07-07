@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schema.aismiths.cloud/job/v1.json",
+  "version": "1",
+  "platform": "replit",
+  "problem_type": "security-audit",
+  "symptoms": ["rls-disabled", "service-role-key-exposed", "no-rate-limiting"],
+  "stack": {
+    "framework": "next.js",
+    "auth": "supabase",
+    "database": "supabase-postgres",
+    "hosting": "fly.io",
+    "language": "typescript"
+  },
+  "codebase": {
+    "url": "https://github.com/client/my-app",
+    "access": "public"
+  },
+  "urgency": "days",
+  "budget_range": {
+    "min": 300,
+    "max": 600,
+    "currency": "USD"
+  },
+  "description": "Launching to paying users next week. Want a security audit before go-live. Built with Replit. npx smith-check scored us 31/100."
+}

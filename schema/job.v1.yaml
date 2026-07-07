@@ -1,0 +1,216 @@
+$schema: 'https://json-schema.org/draft/2020-12/schema'
+$id: 'https://schema.aismiths.cloud/job/v1.json'
+title: AI Rescue Job
+description: >-
+  A standardized description of an AI rescue job — a specific technical problem
+  in an AI-generated codebase that needs expert help to fix.
+type: object
+required:
+  - version
+  - problem_type
+  - stack
+additionalProperties: false
+properties:
+  $schema:
+    type: string
+    description: Always set to https://schema.aismiths.cloud/job/v1.json
+  version:
+    type: string
+    const: '1'
+    description: "Schema version. Always '1' for v1."
+  platform:
+    type: string
+    enum:
+      - bolt
+      - loveable
+      - replit
+      - v0
+      - cursor
+      - windsurf
+      - emergent
+      - base44
+      - forge
+      - hercules
+      - other
+    description: The AI coding platform that generated this codebase.
+  problem_type:
+    type: string
+    enum:
+      - auth-rescue
+      - payment-fix
+      - security-audit
+      - deploy-fix
+      - performance-fix
+      - database-fix
+      - full-rescue
+      - bug-sweep
+      - other
+    description: The category of rescue work needed. Maps to Smith rescue packages.
+  symptoms:
+    type: array
+    items:
+      type: string
+      enum:
+        - oauth-loop
+        - session-not-persisting
+        - jwt-expired
+        - login-redirect-broken
+        - logout-not-working
+        - webhook-not-firing
+        - payment-not-recorded
+        - duplicate-charges
+        - checkout-session-missing
+        - rls-disabled
+        - service-role-key-exposed
+        - env-var-leaked
+        - idor-vulnerability
+        - no-rate-limiting
+        - xss-vulnerability
+        - deploy-fails
+        - port-mismatch
+        - health-check-missing
+        - build-fails
+        - env-vars-missing-in-prod
+        - slow-queries
+        - missing-indexes
+        - n-plus-one-queries
+        - other
+    uniqueItems: true
+    description: Specific observed symptoms. Use as many as apply.
+  stack:
+    type: object
+    required:
+      - framework
+    additionalProperties: false
+    properties:
+      framework:
+        type: string
+        enum:
+          - next.js
+          - remix
+          - sveltekit
+          - nuxt
+          - astro
+          - express
+          - fastapi
+          - other
+        description: The primary web framework.
+      auth:
+        type: string
+        enum:
+          - supabase
+          - clerk
+          - auth0
+          - next-auth
+          - firebase
+          - custom
+          - none
+          - other
+      database:
+        type: string
+        enum:
+          - supabase-postgres
+          - planetscale
+          - neon
+          - turso
+          - firebase-firestore
+          - mongodb
+          - sqlite
+          - other
+      payments:
+        type: string
+        enum:
+          - stripe
+          - lemonsqueezy
+          - paddle
+          - none
+          - other
+      hosting:
+        type: string
+        enum:
+          - vercel
+          - fly.io
+          - railway
+          - render
+          - netlify
+          - aws
+          - other
+      language:
+        type: string
+        enum:
+          - typescript
+          - javascript
+          - python
+          - other
+  codebase:
+    type: object
+    additionalProperties: false
+    properties:
+      url:
+        type: string
+        format: uri
+        description: GitHub/GitLab URL to the repository.
+      access:
+        type: string
+        enum:
+          - public
+          - private-invite
+          - zip-upload
+        description: How the Smith will access the code.
+      branch:
+        type: string
+        description: Branch to work on. Defaults to main.
+      deploy_url:
+        type: string
+        format: uri
+        description: Live URL of the broken deployment, if any.
+  urgency:
+    type: string
+    enum:
+      - hours
+      - days
+      - weeks
+    description: How quickly the client needs this fixed.
+  budget_range:
+    type: object
+    required:
+      - currency
+    additionalProperties: false
+    properties:
+      min:
+        type: integer
+        minimum: 0
+      max:
+        type: integer
+        minimum: 0
+      currency:
+        type: string
+        enum:
+          - USD
+          - EUR
+          - GBP
+        default: USD
+  description:
+    type: string
+    maxLength: 2000
+    description: Free-text description of the problem, written by the client.
+  context:
+    type: object
+    additionalProperties: false
+    description: Optional metadata emitted by tools that generate this schema automatically.
+    properties:
+      generated_by:
+        type: string
+        description: "Tool or platform that generated this job description (e.g. 'smith-check@1.0.2')."
+      generated_at:
+        type: string
+        format: date-time
+      smith_check_score:
+        type: integer
+        minimum: 0
+        maximum: 100
+        description: Score from npx smith-check, if run.
+      smith_check_report_url:
+        type: string
+        format: uri
+        description: Shareable URL of the full smith-check report.

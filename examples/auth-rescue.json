@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schema.aismiths.cloud/job/v1.json",
+  "version": "1",
+  "platform": "bolt",
+  "problem_type": "auth-rescue",
+  "symptoms": ["oauth-loop", "session-not-persisting", "jwt-expired"],
+  "stack": {
+    "framework": "next.js",
+    "auth": "supabase",
+    "database": "supabase-postgres",
+    "hosting": "vercel",
+    "language": "typescript"
+  },
+  "codebase": {
+    "url": "https://github.com/client/my-saas-app",
+    "access": "private-invite",
+    "deploy_url": "https://my-saas-app.vercel.app"
+  },
+  "urgency": "days",
+  "budget_range": {
+    "min": 200,
+    "max": 500,
+    "currency": "USD"
+  },
+  "description": "My app was working in the Bolt.new preview but after deploying to Vercel, Google OAuth keeps looping. Users get sent to /auth/callback and then immediately back to /login. Sessions also seem to reset on every page load.",
+  "context": {
+    "generated_by": "smith-check@1.0.2",
+    "generated_at": "2026-07-07T10:00:00Z",
+    "smith_check_score": 43,
+    "smith_check_report_url": "https://aismiths.cloud/rescue-check/abc-123"
+  }
+}

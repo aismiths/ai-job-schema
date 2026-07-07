@@ -1,0 +1,25 @@
+{
+  "$schema": "https://schema.aismiths.cloud/job/v1.json",
+  "version": "1",
+  "platform": "loveable",
+  "problem_type": "payment-fix",
+  "symptoms": ["webhook-not-firing", "payment-not-recorded", "duplicate-charges"],
+  "stack": {
+    "framework": "next.js",
+    "auth": "clerk",
+    "database": "supabase-postgres",
+    "payments": "stripe",
+    "hosting": "vercel",
+    "language": "typescript"
+  },
+  "codebase": {
+    "access": "zip-upload"
+  },
+  "urgency": "hours",
+  "budget_range": {
+    "min": 150,
+    "max": 300,
+    "currency": "USD"
+  },
+  "description": "Stripe dashboard shows webhooks delivered successfully but orders are never marked as paid in our database. We're also seeing the same order get fulfilled twice sometimes."
+}
