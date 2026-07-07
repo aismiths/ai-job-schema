@@ -1,20 +1,31 @@
 {
   "name": "ai-job-schema",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Open schema standard for AI rescue job descriptions",
   "bin": {
-    "ai-job-schema": "./validate.js"
+    "ai-job-schema": "validate.js"
   },
   "files": [
     "schema/",
     "examples/",
     "validate.js"
   ],
-  "keywords": ["ai", "schema", "json-schema", "rescue", "smith", "bolt", "loveable", "replit", "next.js", "supabase"],
+  "keywords": [
+    "ai",
+    "schema",
+    "json-schema",
+    "rescue",
+    "smith",
+    "bolt",
+    "loveable",
+    "replit",
+    "next.js",
+    "supabase"
+  ],
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aismiths/ai-job-schema"
+    "url": "git+https://github.com/aismiths/ai-job-schema.git"
   },
   "homepage": "https://github.com/aismiths/ai-job-schema#readme"
 }
